@@ -378,3 +378,5 @@ If you are uncertain whether an action was actually executed, you must assume it
 4.  Enter SPECIFICATION mode
 5.  Begin at Stage 0
 6.  Do not write code until Stage 3 is complete
+
+Test safe-agent-push workflow.
