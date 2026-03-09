@@ -40,7 +40,7 @@ $allDiff = "$workingDiff`n$stagedDiff"
 
 $addedLines = $allDiff -split "`n" | Where-Object {
     $_ -match '^\+' -and
-    $_ -notmatch '^\+\+\+'   # ignore diff headers
+    $_ -notmatch '^\+\+\+'
 }
 
 $secretRegexes = @(
