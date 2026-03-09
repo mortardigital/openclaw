@@ -1,0 +1,36 @@
+FROM python:3.12-slim
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    sqlite3 \
+    nodejs \
+    npm \
+ && update-ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN python -m pip install --break-system-packages --no-cache-dir \
+    requests \
+    beautifulsoup4 \
+    lxml \
+    pyyaml \
+    pandas \
+    yfinance \
+    pytest \
+    ruff \
+    mypy \
+    pip-audit
+
+RUN npm install -g pyright
+
+ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt \
+    REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt \
+    WORKDIR=/work \
+    RUNNER_HOST=0.0.0.0 \
+    RUNNER_PORT=8000 \
+    RUNNER_TIMEOUT_SECS=120
+
+WORKDIR /work
+COPY python-runner/runner_service.py /runner_service.py
+
+CMD ["python", "/runner_service.py"]
