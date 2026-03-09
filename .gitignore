@@ -87,3 +87,25 @@ USER.md
 /local/
 package-lock.json
 database/*.db
+
+# OpenClaw local/runtime state
+workspace/.openclaw/
+workspace/memory/
+workspace/output/
+workspace/logs/
+workspace/node_modules/
+workspace/__pycache__/
+workspace/**/*.pyc
+workspace/**/*.log
+workspace/**/*.pid
+workspace/.yf_session_cache.json
+
+# Secrets
+workspace/.telegram_bot_token
+workspace/.telegram_chat_id
+config/
+docker-compose.override.yml
+
+# Databases
+workspace/**/*.db
+database/*.db
